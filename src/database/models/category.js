@@ -7,12 +7,12 @@ const Category = (sequelize, DataTypes) => {
       allowNull: false,
     }, name: {
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
     }
   },
     { timestamps: false }
   );  
   return Category;
 };
-    
+      
 module.exports = Category;
