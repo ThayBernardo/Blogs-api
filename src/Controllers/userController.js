@@ -23,5 +23,12 @@ const userController = {
     const all = await userService.getAll();
     return res.status(200).json(all);
   },
+
+  getById: async (req, res) => {
+    const { id } = req.params;
+    const getById = await userService.getById(id);
+    if (!getById) return res.status(404).json({ message: 'User does not exist' });
+    return res.status(200).json(getById);
+  },
 };
 module.exports = userController;

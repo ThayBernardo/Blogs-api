@@ -15,6 +15,14 @@ const userService = {
     const all = await User.findAll({ attributes: { exclude: ['password'] } });
     return all;
   },
+
+  getById: async (id) => {
+    const getById = await User.findOne({ 
+      where: { id },
+      attributes: { exclude: ['password'] },
+    });
+    return getById;
+  },
 };
 
 module.exports = userService;
