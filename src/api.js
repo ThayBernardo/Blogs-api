@@ -1,6 +1,9 @@
 const express = require('express');
 const loginController = require('./Controllers/loginController');
+const userController = require('./Controllers/userController');
 const verifyLogin = require('./Middlewares/verifyLogin');
+const verifyCreate = require('./Middlewares/verifyCreate');
+const Error = require('./Middlewares/Error');
 
 // ...
 
@@ -8,6 +11,8 @@ const app = express();
 
 app.use(express.json());
 app.post('/login', verifyLogin.login, loginController.login);
+app.post('/user', verifyCreate.create, userController.create);
+app.use(Error.err);
 
 // ...
 
