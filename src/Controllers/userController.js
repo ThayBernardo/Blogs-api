@@ -18,5 +18,10 @@ const userController = {
     const token = jwt.sign({ email }, JWT_SECRET, jwtConfig);
     return res.status(201).json({ token });
   },
+
+  getAll: async (req, res) => {
+    const all = await userService.getAll();
+    return res.status(200).json(all);
+  },
 };
 module.exports = userController;

@@ -10,6 +10,11 @@ const userService = {
     const getEmail = await User.findOne({ where: { email } });
     return getEmail;
   },
+
+  getAll: async () => {
+    const all = await User.findAll({ attributes: { exclude: ['password'] } });
+    return all;
+  },
 };
 
 module.exports = userService;
