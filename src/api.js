@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.post('/login', verifyLogin.login, loginController.login);
 app.post('/categories', auth, verifyCreateCategory.create, categoryController.create);
+app.get('/categories', auth, categoryController.getAll);
 app.use('/user', userRoute);
 app.use(Error.err);
 
