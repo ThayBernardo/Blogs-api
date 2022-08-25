@@ -1,17 +1,18 @@
 const express = require('express');
 const userRoute = require('./Routes/userRoute');
-const { loginController } = require('./Controllers');
+const { loginController, categoryController } = require('./Controllers');
 const {
   verifyLogin,
   auth,
   Error,
+  verifyCreateCategory,
 } = require('./Middlewares');
 
 const app = express();
 
 app.use(express.json());
 app.post('/login', verifyLogin.login, loginController.login);
-app.post('/category', auth);
+app.post('/categories', auth, verifyCreateCategory.create, categoryController.create);
 app.use('/user', userRoute);
 app.use(Error.err);
 
