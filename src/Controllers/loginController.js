@@ -1,6 +1,6 @@
 require('dotenv');
 const jwt = require('jsonwebtoken');
-const loginService = require('../Services/loginService');
+const { loginService } = require('../Services');
 
 const jwtConfig = {
   expiresIn: '1d',
