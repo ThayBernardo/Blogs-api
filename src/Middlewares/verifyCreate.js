@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const verifyCreate = {
-  create: async (req, res, next) => {
+  create: async (req, _res, next) => {
     const schema = Joi.object({
       displayName: Joi.string().min(8).required(),
       email: Joi.string().email().required(),
