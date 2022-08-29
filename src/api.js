@@ -15,7 +15,8 @@ app.use(express.json());
 app.post('/login', verifyLogin.login, loginController.login);
 app.post('/categories', auth, verifyCreateCategory.create, categoryController.create);
 app.get('/categories', auth, categoryController.getAll);
-app.post('/post', auth, postController.create);
+// app.post('/post', auth, postController.create);
+app.get('/post', auth, postController.getAll);
 app.use('/user', userRoute);
 app.use(Error.err);
 
