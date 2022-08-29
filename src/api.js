@@ -17,6 +17,7 @@ app.post('/categories', auth, verifyCreateCategory.create, categoryController.cr
 app.get('/categories', auth, categoryController.getAll);
 // app.post('/post', auth, postController.create);
 app.get('/post', auth, postController.getAll);
+app.get('/post/:id', auth, postController.getById);
 app.use('/user', userRoute);
 app.use(Error.err);
 
