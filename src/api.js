@@ -1,24 +1,18 @@
 require('express-async-errors');
 const express = require('express');
 const userRoute = require('./Routes/userRoute');
-const { loginController, categoryController, postController } = require('./Controllers');
-const {
-  verifyLogin,
-  auth,
-  Error,
-  verifyCreateCategory,
-} = require('./Middlewares');
+const postRoute = require('./Routes/postRoute');
+const categoryRoute = require('./Routes/categoryRoute');
+const loginRoute = require('./Routes/loginRoute');
+const { Error } = require('./Middlewares');
 
 const app = express();
 
 app.use(express.json());
-app.post('/login', verifyLogin.login, loginController.login);
-app.post('/categories', auth, verifyCreateCategory.create, categoryController.create);
-app.get('/categories', auth, categoryController.getAll);
-// app.post('/post', auth, postController.create);
-app.get('/post', auth, postController.getAll);
-app.get('/post/:id', auth, postController.getById);
+app.use('/login', loginRoute);
+app.use('/categories', categoryRoute);
 app.use('/user', userRoute);
+app.use('/post', postRoute);
 app.use(Error.err);
 
 // ...

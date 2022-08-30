@@ -1,10 +1,10 @@
 const { User, BlogPost, Category } = require('../database/models');
 
 const postService = {
-  // userId: async ({ email }) => {
-  //   const getByEmail = await User.findOne({ where: { email } });
-  //   return getByEmail;
-  // },
+  userId: async ({ email }) => {
+    const getByEmail = await User.findOne({ where: { email } });
+    return getByEmail;
+  },
 
   // create: async ({ title, content, categoryIds, id }) => {
   //   await BlogPost.create({ title, content, categoryIds });
@@ -47,6 +47,12 @@ const postService = {
       }],
     });
     return byId;
+  },
+
+  update: async ({ title, content, id }) => {
+    await BlogPost.update({ title, content }, { where: id });
+    const result = await this.getById(id);
+    return result;
   },
 };
 

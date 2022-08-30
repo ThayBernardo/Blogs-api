@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const verifyCreateCategory = {
-  create: async (req, res, next) => {
+  create: async (req, _res, next) => {
     const schema = Joi.object({
       name: Joi.string().required(),
     });
