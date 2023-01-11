@@ -50,7 +50,7 @@ const postService = {
   },
 
   update: async ({ title, content, id }) => {
-    await BlogPost.update({ title, content }, { where: id });
+    await BlogPost.update({ where: id }, { title, content });
     const result = await this.getById(id);
     return result;
   },

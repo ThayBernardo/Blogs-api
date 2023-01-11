@@ -24,11 +24,17 @@ const postController = {
   },
 
   update: async (req, res) => {
+    // pega token
     const { authorization: token } = req.headers;
+    // pega id
     const { id } = req.params;
+    // pega o corpo
     const { title, content } = req.body;
+    // pega email que ta no token
     const { email } = jwtDecode(token);
+    // pega id relacionado ao email
     const { id: realId } = await postService.userId({ email });
+    // se o id for diferente do esperado 
     if (id !== realId) return res.status(401).json({ message: 'Unauthorized user' });
     const update = await postService.update({ title, content, id });
     return res.status(200).json(update);

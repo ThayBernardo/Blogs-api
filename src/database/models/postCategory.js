@@ -4,10 +4,14 @@ const PostCategory = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       foreignKey: true,
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     }, categoryId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       foreignKey: true,
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     }
   },
     { timestamps: false }
